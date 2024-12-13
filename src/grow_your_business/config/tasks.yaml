@@ -22,6 +22,10 @@ sales_optimization_task:
     Develop sales strategy for {company} focused on {market}.
     Create sales optimization plan aligned with company goals.
   expected_output: >
-    A complete sales optimization plan with funnel improvements,
-    conversion tactics, and retention strategies for {target_segment}.
+    **Complete Sales Optimization Plan for {company}**
+
+    A comprehensive marketing strategy document with:
+    - Detailed implementation plan for {goal}
+    - Targeted marketing approaches for {target_segment}
+    - Tactical recommendations for business growth
   agent: sales_strategist
