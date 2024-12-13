@@ -1,0 +1,20 @@
+[project]
+name = "grow_your_business"
+version = "0.1.0"
+description = "grow_your_business using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0"
+]
+
+[project.scripts]
+grow_your_business = "grow_your_business.main:run"
+run_crew = "grow_your_business.main:run"
+train = "grow_your_business.main:train"
+replay = "grow_your_business.main:replay"
+test = "grow_your_business.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
