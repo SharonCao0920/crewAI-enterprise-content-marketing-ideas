@@ -1,23 +1,27 @@
 market_analysis_task:
-  description: "Analyze PaycheckManager.com's market position"
-  expected_output: "Detailed market analysis report"
-  agent: "market_researcher"
-  context: >
-    Research target market needs, analyze competitors, and identify growth opportunities.
-    Focus on small business segment with 1-50 employees.
+  description: >
+    Analyze {company}'s market position in {market}.
+    Focus on understanding market needs, competitive landscape, and growth opportunities
+    for {target_segment}.
+  expected_output: >
+    A detailed market analysis report including competitor insights, market trends,
+    and actionable growth recommendations.
+  agent: market_researcher
 
 content_strategy_task:
-  description: "Create marketing strategy for PaycheckManager.com"
-  expected_output: "Comprehensive marketing strategy document"
-  agent: "content_strategist"
-  context: >
-    Develop value proposition messaging, content plan, and acquisition channels
-    based on market research findings.
+  description: >
+    Create marketing strategy for {company} to achieve {goal}.
+    Develop comprehensive marketing approach targeting {market}.
+  expected_output: >
+    A comprehensive marketing strategy document with campaign frameworks,
+    content plans, and channel recommendations for {target_segment}.
+  agent: content_strategist
 
 sales_optimization_task:
-  description: "Develop sales strategy for PaycheckManager.com"
-  expected_output: "Sales optimization plan"
-  agent: "sales_strategist"
-  context: >
-    Create sales funnel optimization plan and conversion tactics
-    aligned with marketing strategy.
+  description: >
+    Develop sales strategy for {company} focused on {market}.
+    Create sales optimization plan aligned with company goals.
+  expected_output: >
+    A complete sales optimization plan with funnel improvements,
+    conversion tactics, and retention strategies for {target_segment}.
+  agent: sales_strategist

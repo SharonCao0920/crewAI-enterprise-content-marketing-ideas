@@ -1,109 +1,71 @@
 #!/usr/bin/env python
 import sys
+import warnings
 from grow_your_business.crew import GrowYourBusiness
 
-def run():
-    """Run the crew with three focused inputs."""
-    company_name = "PaycheckManager.com"
-    target_market = "Small businesses with 1-50 employees"
-    primary_goal = "Increase subscriber base and market share"
+warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-    crew_manager = GrowYourBusiness()
-    crew = crew_manager.get_crew(
-        company_name=company_name,
-        target_market=target_market,
-        primary_goal=primary_goal
-    )
-    
-    result = crew.kickoff()
-    print(result)
+def run():
+    """
+    Run the crew with business inputs.
+    """
+    inputs = {
+        'company': 'PaycheckManager.com',
+        'market': 'Small businesses with 1-50 employees',
+        'goal': 'Increase subscriber base and market share',
+        'industry': 'B2B SaaS',
+        'target_segment': 'small business segment'
+    }
+    GrowYourBusiness().crew().kickoff(inputs=inputs)
 
 def train():
-    """Train the crew with multiple iterations."""
-    company_name = "PaycheckManager.com"
-    target_market = "Small businesses with 1-50 employees"
-    primary_goal = "Increase subscriber base and market share"
-
+    """
+    Train the crew for a given number of iterations.
+    """
+    inputs = {
+        'company': 'PaycheckManager.com',
+        'market': 'Small businesses with 1-50 employees',
+        'goal': 'Increase subscriber base and market share',
+        'industry': 'B2B SaaS',
+        'target_segment': 'small business segment'
+    }
     try:
-        crew_manager = GrowYourBusiness()
-        crew = crew_manager.get_crew(
-            company_name=company_name,
-            target_market=target_market,
-            primary_goal=primary_goal
-        )
-        
-        result = crew.train(
+        GrowYourBusiness().crew().train(
             n_iterations=int(sys.argv[1]),
-            filename=sys.argv[2]
+            filename=sys.argv[2],
+            inputs=inputs
         )
-        print(result)
     except Exception as e:
-        print(f"Training error: {e}")
+        raise Exception(f"An error occurred while training the crew: {e}")
 
 def replay():
-    """Replay a specific task execution."""
-    company_name = "PaycheckManager.com"
-    target_market = "Small businesses with 1-50 employees"
-    primary_goal = "Increase subscriber base and market share"
-
+    """
+    Replay the crew execution from a specific task.
+    """
     try:
-        crew_manager = GrowYourBusiness()
-        crew = crew_manager.get_crew(
-            company_name=company_name,
-            target_market=target_market,
-            primary_goal=primary_goal
-        )
-        
-        result = crew.replay(task_id=sys.argv[1])
-        print(result)
+        GrowYourBusiness().crew().replay(task_id=sys.argv[1])
     except Exception as e:
-        print(f"Replay error: {e}")
+        raise Exception(f"An error occurred while replaying the crew: {e}")
 
 def test():
-    """Test the crew with different configurations."""
-    company_name = "PaycheckManager.com"
-    target_market = "Small businesses with 1-50 employees"
-    primary_goal = "Increase subscriber base and market share"
-
+    """
+    Test the crew execution and returns the results.
+    """
+    inputs = {
+        'company': 'PaycheckManager.com',
+        'market': 'Small businesses with 1-50 employees',
+        'goal': 'Increase subscriber base and market share',
+        'industry': 'B2B SaaS',
+        'target_segment': 'small business segment'
+    }
     try:
-        crew_manager = GrowYourBusiness()
-        crew = crew_manager.get_crew(
-            company_name=company_name,
-            target_market=target_market,
-            primary_goal=primary_goal
-        )
-        
-        result = crew.test(
+        GrowYourBusiness().crew().test(
             n_iterations=int(sys.argv[1]),
-            openai_model_name=sys.argv[2]
+            openai_model_name=sys.argv[2],
+            inputs=inputs
         )
-        print(result)
     except Exception as e:
-        print(f"Testing error: {e}")
-
-def main():
-    """Main function to handle different command line arguments."""
-    if len(sys.argv) < 2:
-        run()
-    else:
-        command = sys.argv[1]
-        if command == "train":
-            if len(sys.argv) < 4:
-                print("Usage: python main.py train <n_iterations> <output_filename>")
-                return
-            train()
-        elif command == "replay":
-            if len(sys.argv) < 3:
-                print("Usage: python main.py replay <task_id>")
-                return
-            replay()
-        elif command == "test":
-            if len(sys.argv) < 4:
-                print("Usage: python main.py test <n_iterations> <model_name>")
-                return
-            test()
-        else:
-            print("Unknown command. Available commands: train, replay, test")
+        raise Exception(f"An error occurred while testing the crew: {e}")
 
 if __name__ == "__main__":
-    main()
+    run()
